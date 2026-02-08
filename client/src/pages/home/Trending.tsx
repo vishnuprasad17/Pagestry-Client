@@ -12,7 +12,6 @@ const Trending: React.FC = () => {
 
   const getGridClasses = (): string => {
     const count = books.length;
-    console.log('Book count:', count);
     
     // Use explicit classes instead of template literals for Tailwind to recognize them
     if (count === 1) return 'grid-cols-1';
