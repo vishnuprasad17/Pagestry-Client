@@ -306,7 +306,7 @@ const OrderListItem = ({ order }: Props) => {
 
               {["PENDING", "PLACED", "CONFIRMED"].includes(order.status) && (
                 <Link
-                  to={`/user-dashboard/orders/${order.id}?action=cancel`}
+                  to={`/user-dashboard/orders/${order.orderId}?action=cancel`}
                   className="px-4 py-2 border border-red-300 text-red-600 rounded-lg text-sm font-medium hover:bg-red-50 transition-colors"
                 >
                   Cancel Order
