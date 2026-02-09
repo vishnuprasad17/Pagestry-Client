@@ -160,15 +160,10 @@ interface PaymentData {
     razorpay_signature: string;
 }
 
-interface VerifyPayment {
-  success: boolean;
-  order?: OrderData;
-  outOfStockIds?: string[];
-  message: string;
-}
 interface VerifyPaymentResponse {
     success: boolean;
-    data: VerifyPayment;
+    order?: OrderData;
+    outOfStockIds?: string[];
     message: string;
 }
 
@@ -208,7 +203,6 @@ export type {
     RazorpayKeyData,
     GetRazorpayKeyResponse,
     PaymentData,
-    VerifyPayment,
     VerifyPaymentResponse,
     VerifyPaymentArgs,
     CancelOrderResponse,

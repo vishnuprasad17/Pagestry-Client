@@ -1,7 +1,7 @@
 import { BaseQueryFn, createApi } from "@reduxjs/toolkit/query/react";
 import { baseQueryWithAuth } from "../auth/baseQuery";
 import { API_ROUTES } from "../../../constants/apiRoutes";
-import { CancelOrderArgs, CancelOrderResponse, CreateOrderArgs, CreateOrderResponse, GetOrdersResponse, GetRazorpayKeyResponse, GetSingleOrderResponse, OrderResponse, PaginatedOrderData, RazorpayKeyData, VerifyPayment, VerifyPaymentArgs, VerifyPaymentResponse } from "../../../types/order";
+import { CancelOrderArgs, CancelOrderResponse, CreateOrderArgs, CreateOrderResponse, GetOrdersResponse, GetRazorpayKeyResponse, GetSingleOrderResponse, OrderResponse, PaginatedOrderData, RazorpayKeyData, VerifyPaymentArgs, VerifyPaymentResponse } from "../../../types/order";
 
 
 const orderApi = createApi({
@@ -38,14 +38,13 @@ const orderApi = createApi({
             }),
             transformResponse: (response: GetRazorpayKeyResponse) => response.data
         }),
-        verifyPayment: builder.mutation<VerifyPayment, VerifyPaymentArgs>({
+        verifyPayment: builder.mutation<VerifyPaymentResponse, VerifyPaymentArgs>({
             query: (data) => ({
                 url: `/${API_ROUTES.ORDERS}/verify-payment`,
                 method: "POST",
                 body: data
             }),
-            invalidatesTags: ['Orders'],
-            transformResponse: (response: VerifyPaymentResponse) => response.data
+            invalidatesTags: ['Orders']
         }),
         cancelOrder: builder.mutation<CancelOrderResponse, CancelOrderArgs>({
             query: ({orderId, reason}) => ({
