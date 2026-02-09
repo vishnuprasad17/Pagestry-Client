@@ -62,16 +62,11 @@ interface OrderData {
     updatedAt: Date;
 }
 
-interface CreateOrderData {
-    success: boolean;
-    order: OrderData;
-    razorpayOrderId: string;
-    message: string;
-}
-
 interface CreateOrderResponse {
     success: boolean;
-    data: CreateOrderData;
+    order?: OrderData;
+    razorpayOrderId?: string;
+    outOfStockIds?: string[];
     message: string;
 }
 

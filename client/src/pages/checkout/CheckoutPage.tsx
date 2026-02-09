@@ -152,7 +152,6 @@ const Checkout: React.FC = () => {
       }).unwrap();
 
       if (!res?.success) {
-        console.log(res);
         toast.error(res?.message || "Order creation failed");
         return;
       }
@@ -164,7 +163,7 @@ const Checkout: React.FC = () => {
         navigate(USER.ORDERS);
       } else if (paymentMethod === "RAZORPAY") {
         // Open Razorpay checkout
-        await handleRazorpayPayment(res.data.order, res.data.razorpayOrderId);
+        await handleRazorpayPayment(res.order!, res.razorpayOrderId!);
       }
     } catch (error) {
       console.error("Order creation error:", error);
