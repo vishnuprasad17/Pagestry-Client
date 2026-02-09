@@ -152,6 +152,7 @@ const Checkout: React.FC = () => {
       }).unwrap();
 
       if (!res?.success) {
+        console.log(res);
         toast.error(res?.message || "Order creation failed");
         return;
       }
